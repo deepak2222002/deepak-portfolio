@@ -84,7 +84,7 @@ function Hero() {
               transition={{ duration: 0.6, delay: 0.7 }}
             >
               <a
-                href="https://github.com/"
+                href="https://github.com/deepak2222002"
                 target="_blank"
                 rel="noreferrer"
                 className="btn btn-outline-secondary rounded-circle"
@@ -94,7 +94,7 @@ function Hero() {
               </a>
 
               <a
-                href="https://linkedin.com/"
+                href="https://linkedin.com/in/verma-iot-solutions"
                 target="_blank"
                 rel="noreferrer"
                 className="btn btn-outline-secondary rounded-circle"
@@ -104,7 +104,7 @@ function Hero() {
               </a>
 
               <a
-                href="https://instagram.com/"
+                href="https://instagram.com/verma-iot-solutions"
                 target="_blank"
                 rel="noreferrer"
                 className="btn btn-outline-secondary rounded-circle"
