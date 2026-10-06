@@ -39,78 +39,119 @@ function Achievements() {
   ];
 
   return (
-    <section id="achievements" className="bg-transparent py-5">
-      <div className="container py-5">
+    <section
+      id="achievements"
+      className="py-5"
+      style={{
+        backgroundColor: "#0f172a",
+      }}
+    >
+      <div className="container px-3">
 
-        {/* Heading */}
+        {/* ================= HEADING ================= */}
         <motion.div
-          className="text-center mb-5"
-          initial={{ opacity: 0, y: 40 }}
+          className="text-center mb-4"
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
         >
-          <p className="text-primary fw-bold text-uppercase mb-2">
+          <p
+            className="fw-semibold small text-uppercase mb-1"
+            style={{ color: "#67c7e8" }}
+          >
             Achievements
           </p>
 
-          <h2 className="display-5 fw-bold">
+          <h2 className="fw-bold text-light mb-2">
             Milestones That Matter
           </h2>
 
-          <p className="text-secondary lead mt-3">
+          <p className="text-secondary small mb-0">
             A few milestones and accomplishments from my professional journey.
           </p>
         </motion.div>
 
-        {/* Achievement Cards */}
-        <div className="row g-4 justify-content-center">
+
+        {/* ================= ACHIEVEMENTS ================= */}
+        <div className="row g-3">
 
           {achievements.map((achievement, index) => {
             const Icon = achievement.icon;
 
             return (
               <div
-                className="col-12 col-md-6 col-lg-3"
+                className="col-12 col-sm-6 col-lg-3"
                 key={achievement.title}
               >
                 <motion.div
-                  className="card h-100 border-0 shadow-sm text-center"
-                  initial={{ opacity: 0, y: 50 }}
+                  className="card h-100 border-0 shadow-sm"
+                  style={{
+                    backgroundColor: "#151c2c",
+                    borderRadius: "10px",
+                  }}
+                  initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
+                  viewport={{ once: true }}
                   transition={{
-                    duration: 0.6,
-                    delay: index * 0.1,
+                    duration: 0.45,
+                    delay: index * 0.08,
                   }}
                   whileHover={{
-                    y: -8,
+                    y: -5,
                   }}
                 >
-                  <div className="card-body p-4">
 
-                    {/* Icon */}
-                    <div className="mb-4">
-                      <div className="bg-primary bg-opacity-10 rounded-circle d-inline-flex p-3">
+                  <div className="card-body p-3">
+
+                    {/* Top */}
+                    <div className="d-flex justify-content-between align-items-start mb-3">
+
+                      <div
+                        className="rounded-3 d-flex align-items-center justify-content-center"
+                        style={{
+                          width: "42px",
+                          height: "42px",
+                          backgroundColor:
+                            "rgba(103, 199, 232, 0.08)",
+                          border:
+                            "1px solid rgba(103, 199, 232, 0.25)",
+                        }}
+                      >
                         <Icon
-                          size={32}
-                          className="text-primary"
+                          size={21}
+                          strokeWidth={1.8}
+                          style={{ color: "#67c7e8" }}
                         />
                       </div>
+
+                      <span
+                        className="badge fw-normal"
+                        style={{
+                          color: "#8bd9f3",
+                          backgroundColor:
+                            "rgba(103, 199, 232, 0.07)",
+                          border:
+                            "1px solid rgba(103, 199, 232, 0.22)",
+                        }}
+                      >
+                        {achievement.year}
+                      </span>
+
                     </div>
 
-                    {/* Year */}
-                    <span className="badge bg-secondary mb-3">
-                      {achievement.year}
-                    </span>
 
                     {/* Title */}
-                    <h4 className="h5 fw-bold mb-3">
+                    <h5 className="fw-bold text-light mb-2">
                       {achievement.title}
-                    </h4>
+                    </h5>
+
 
                     {/* Description */}
-                    <p className="text-secondary mb-0">
+                    <p
+                      className="small lh-lg mb-0"
+                      style={{ color: "#94a3b8" }}
+                    >
                       {achievement.description}
                     </p>
 
@@ -121,6 +162,7 @@ function Achievements() {
           })}
 
         </div>
+
       </div>
     </section>
   );
