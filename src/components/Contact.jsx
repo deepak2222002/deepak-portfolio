@@ -74,7 +74,7 @@ function Contact() {
                     href="mailto:your-email@example.com"
                     className="text-white text-decoration-none"
                   >
-                    your-email@example.com
+                    dverma6342@example.com
                   </a>
                 </div>
               </div>
@@ -104,33 +104,33 @@ function Contact() {
               <div className="d-flex gap-3">
 
                 <a
-                  href="https://github.com/"
+                  href="https://github.com/deepak2222002/"
                   target="_blank"
                   rel="noreferrer"
-                  className="btn btn-outline-light rounded-circle"
+                  className="btn btn-outline-secondary rounded-circle"
                   aria-label="GitHub"
                 >
-                  <FaGithub size={20} />
+                  <FaGithub />
                 </a>
 
                 <a
-                  href="https://linkedin.com/"
+                  href="https://linkedin.com/in/verma-iot-solutions/"
                   target="_blank"
                   rel="noreferrer"
-                  className="btn btn-outline-light rounded-circle"
+                  className="btn btn-outline-secondary rounded-circle"
                   aria-label="LinkedIn"
                 >
-                  <FaLinkedin size={20} />
+                  <FaLinkedin />
                 </a>
 
                 <a
-                  href="https://instagram.com/"
+                  href="https://www.instagram.com/vermaji7217/"
                   target="_blank"
                   rel="noreferrer"
-                  className="btn btn-outline-light rounded-circle"
+                  className="btn btn-outline-secondary rounded-circle"
                   aria-label="Instagram"
                 >
-                  <FaInstagram size={20} />
+                  <FaInstagram />
                 </a>
 
               </div>

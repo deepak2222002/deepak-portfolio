@@ -6,27 +6,6 @@ import projectsData from "../data/projectsData";
 function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
 
-  const accentColors = [
-    {
-      border: "border-primary",
-      icon: "text-primary",
-      bg: "bg-primary-subtle",
-      badge: "text-bg-primary",
-    },
-    {
-      border: "border-info",
-      icon: "text-info",
-      bg: "bg-info-subtle",
-      badge: "text-bg-info",
-    },
-    {
-      border: "border-warning",
-      icon: "text-warning",
-      bg: "bg-warning-subtle",
-      badge: "text-bg-warning",
-    },
-  ];
-
   const projectIcons = [
     "bi bi-cart-check-fill",
     "bi bi-diagram-3-fill",
@@ -34,9 +13,12 @@ function Projects() {
   ];
 
   return (
-    <section id="projects" className="py-5 bg-dark text-light bg-transparent">
-
-      <div className="container py-5 ">
+    <section
+      id="projects"
+      className="py-5 text-light"
+      style={{ background: "transparent" }}
+    >
+      <div className="container py-5">
 
         {/* =========================
             SECTION HEADING
@@ -49,11 +31,17 @@ function Projects() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-primary fw-bold text-uppercase small mb-2">
+          <p
+            className="fw-bold text-uppercase small mb-2"
+            style={{
+              color: "#67c7e8",
+              letterSpacing: "3px",
+            }}
+          >
             WHAT I BUILT
           </p>
 
-          <h2 className="display-5 fw-bold mb-3">
+          <h2 className="display-5 fw-bold mb-3 text-white">
             Featured Projects
           </h2>
 
@@ -72,8 +60,6 @@ function Projects() {
         <div className="row g-4">
 
           {projectsData.map((project, index) => {
-            const color =
-              accentColors[index % accentColors.length];
 
             const icon =
               projectIcons[index % projectIcons.length];
@@ -85,45 +71,78 @@ function Projects() {
               >
 
                 <motion.div
-                  className={`card h-100 bg-black text-light shadow-lg border-2 ${color.border}`}
+                  className="card h-100 text-light shadow-lg"
+                  style={{
+                    background: "#111c2e",
+                    border: "1px solid #26364f",
+                    borderRadius: "16px",
+                    overflow: "hidden",
+                  }}
+
                   initial={{
                     opacity: 0,
                     y: 50,
                   }}
+
                   whileInView={{
                     opacity: 1,
                     y: 0,
                   }}
+
                   viewport={{
                     once: true,
                     amount: 0.2,
                   }}
+
                   transition={{
                     duration: 0.5,
                     delay: index * 0.12,
                   }}
+
                   whileHover={{
-                    y: -10,
-                    scale: 1.01,
+                    y: -8,
+                    boxShadow:
+                      "0 15px 35px rgba(103, 199, 232, 0.12)",
+                    borderColor: "#67c7e8",
                   }}
                 >
 
                   {/* =========================
-                      COLOUR HEADER
+                      HEADER
                   ========================== */}
 
                   <div
-                    className={`card-header border-0 ${color.bg} d-flex justify-content-between align-items-center p-4`}
+                    className="p-4 d-flex justify-content-between align-items-center"
+                    style={{
+                      background:
+                        "linear-gradient(135deg, #17263a, #111c2e)",
+                      borderBottom: "1px solid #26364f",
+                    }}
                   >
 
+                    {/* Icon */}
+
                     <div
-                      className={`rounded-3 p-3 bg-dark ${color.icon}`}
+                      className="rounded-3 p-3 d-flex align-items-center justify-content-center"
+                      style={{
+                        background: "#0f172a",
+                        color: "#67c7e8",
+                        width: "58px",
+                        height: "58px",
+                      }}
                     >
-                      <i className={`${icon} fs-2`}></i>
+                      <i className={`${icon} fs-3`}></i>
                     </div>
 
+
+                    {/* Number */}
+
                     <span
-                      className={`badge ${color.badge} fs-6 px-3 py-2`}
+                      className="fw-bold"
+                      style={{
+                        color: "#64748b",
+                        fontSize: "24px",
+                      }}
                     >
                       {project.number ||
                         String(index + 1).padStart(2, "0")}
@@ -133,43 +152,56 @@ function Projects() {
 
 
                   {/* =========================
-                      CARD BODY
+                      BODY
                   ========================== */}
 
                   <div className="card-body p-4">
 
-                    <div className="mb-3">
+                    {/* Project Label */}
 
-                      <span className={`badge ${color.badge} mb-3`}>
-                        PROJECT
-                      </span>
+                    <span
+                      className="badge rounded-pill mb-3 px-3 py-2"
+                      style={{
+                        background: "#1e3a50",
+                        color: "#67c7e8",
+                      }}
+                    >
+                      PROJECT
+                    </span>
 
-                      <h3 className="card-title fw-bold fs-4">
-                        {project.title}
-                      </h3>
 
-                    </div>
+                    {/* Title */}
 
+                    <h3 className="card-title fw-bold fs-4 text-white">
+                      {project.title}
+                    </h3>
+
+
+                    {/* Description */}
 
                     <p className="card-text text-secondary mb-4">
                       {project.description}
                     </p>
 
 
-                    {/* TECHNOLOGIES */}
+                    {/* Technologies */}
 
                     <div className="d-flex flex-wrap gap-2">
 
                       {project.technologies.map(
                         (technology) => (
-
                           <span
                             key={technology}
-                            className="badge rounded-pill bg-dark border border-secondary text-light px-3 py-2"
+                            className="badge rounded-pill fw-normal px-3 py-2"
+                            style={{
+                              background: "#0f172a",
+                              color: "#cbd5e1",
+                              border:
+                                "1px solid #334155",
+                            }}
                           >
                             {technology}
                           </span>
-
                         )
                       )}
 
@@ -182,11 +214,16 @@ function Projects() {
                       FOOTER
                   ========================== */}
 
-                  <div className="card-footer bg-transparent border-secondary p-4">
+                  <div
+                    className="p-4"
+                    style={{
+                      borderTop: "1px solid #26364f",
+                    }}
+                  >
 
                     <div className="d-flex gap-2">
 
-                      {/* GITHUB */}
+                      {/* GitHub */}
 
                       <a
                         href={project.github || "#"}
@@ -203,11 +240,16 @@ function Projects() {
                       </a>
 
 
-                      {/* DETAILS */}
+                      {/* Details */}
 
                       <button
                         type="button"
-                        className={`btn ${color.badge} flex-fill`}
+                        className="btn flex-fill"
+                        style={{
+                          background: "#67c7e8",
+                          color: "#0f172a",
+                          fontWeight: "600",
+                        }}
                         onClick={() =>
                           setSelectedProject(project)
                         }
@@ -243,7 +285,6 @@ function Projects() {
         )}
 
       </div>
-
     </section>
   );
 }
