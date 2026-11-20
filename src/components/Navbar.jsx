@@ -102,7 +102,7 @@ function Navbar() {
 
             {/* RESUME */}
             <a
-              href={`${import.meta.env.BASE_URL}resume.pdf`}
+              href={`${import.meta.env.BASE_URL}Deepak-java-full-stack.pdf`}
               target="_blank"
               rel="noopener noreferrer"
               className="navbar-resume-btn"

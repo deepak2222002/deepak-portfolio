@@ -118,7 +118,7 @@ function Hero() {
 
               {/* Resume */}
               <a
-                href="/resume.pdf"
+                href="/Deepak-java-full-stack.pdf"
                 download="Deepak-Verma-Resume.pdf"
                 className="btn hero-resume-btn"
               >
