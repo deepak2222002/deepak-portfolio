@@ -1,78 +1,124 @@
-import { Container, Nav, Navbar as BootstrapNavbar, Button } from "react-bootstrap";
+
+import {
+  Container,
+  Nav,
+  Navbar as BootstrapNavbar,
+} from "react-bootstrap";
+
+import {
+  FaPhone,
+  FaEnvelope,
+  FaDownload,
+} from "react-icons/fa";
+
+import "../css/Navbar.css";
 
 function Navbar() {
-    return (
-        <BootstrapNavbar
-            expand="lg"
-            bg="transparent"
-            variant="dark"
-            sticky="top"
-            className="shadow-sm w-100"
+  const navigation = [
+    { label: "About", href: "#home" },
+    { label: "Skills", href: "#skills" },
+    { label: "Experience", href: "#experience" },
+    { label: "Projects", href: "#projects" },
+    { label: "Contact", href: "#contact" },
+  ];
+
+  return (
+    <BootstrapNavbar
+      expand="lg"
+      variant="dark"
+      sticky="top"
+      className="portfolio-navbar"
+    >
+
+      <Container className="navbar-container">
+
+        {/* BRAND */}
+        <BootstrapNavbar.Brand
+          href="#home"
+          className="navbar-brand-custom"
         >
-            <Container>
 
-                {/* Logo / Name */}
-                <BootstrapNavbar.Brand href="#home">
-                    <strong>Deepak Verma</strong>
-                </BootstrapNavbar.Brand>
+          <span className="navbar-logo">
+            DV
+          </span>
 
+          <span className="navbar-brand-text">
 
-                {/* Mobile Toggle */}
-                <BootstrapNavbar.Toggle aria-controls="portfolio-navbar" />
+            <strong>Deepak Verma</strong>
 
+            <small>Java Full Stack Developer</small>
 
-                {/* Navigation */}
-                <BootstrapNavbar.Collapse id="portfolio-navbar">
+          </span>
 
-                    <Nav className="mx-auto">
+        </BootstrapNavbar.Brand>
 
-                        <Nav.Link href="#home">
-                            Home
-                        </Nav.Link>
+        {/* MOBILE TOGGLE */}
+        <BootstrapNavbar.Toggle
+          aria-controls="portfolio-navbar"
+        />
 
-                        <Nav.Link href="#journey">
-                            Journey
-                        </Nav.Link>
+        {/* NAVIGATION CONTENT */}
+        <BootstrapNavbar.Collapse id="portfolio-navbar">
 
-                        <Nav.Link href="#projects">
-                            Projects
-                        </Nav.Link>
+          {/* CENTER NAVIGATION */}
+          <Nav className="mx-auto navbar-links">
 
-                        <Nav.Link href="#skills">
-                            Skills
-                        </Nav.Link>
+            {navigation.map((item, index) => (
+              <Nav.Link
+                key={item.label}
+                href={item.href}
+                className={
+                  index === 0
+                    ? "navbar-link active"
+                    : "navbar-link"
+                }
+              >
+                {item.label}
+              </Nav.Link>
+            ))}
 
-                        <Nav.Link href="#experience">
-                            Experience
-                        </Nav.Link>
+          </Nav>
 
-                        <Nav.Link href="#achievements">
-                            Achievements
-                        </Nav.Link>
+          {/* RIGHT ACTION BUTTONS */}
+          <div className="navbar-actions">
 
-                        <Nav.Link href="#contact">
-                            Contact
-                        </Nav.Link>
+            {/* PHONE */}
+            <a
+              href="tel:+917217699545"
+              className="navbar-icon-btn"
+              aria-label="Call Deepak"
+            >
+              <FaPhone />
+            </a>
 
-                    </Nav>
+            {/* EMAIL */}
+            <a
+              href="mailto:dverma6342@gmail.com"
+              className="navbar-icon-btn"
+              aria-label="Email Deepak"
+            >
+              <FaEnvelope />
+            </a>
 
+            {/* RESUME */}
+            <a
+              href={`${import.meta.env.BASE_URL}resume.pdf`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="navbar-resume-btn"
+            >
+              <FaDownload />
+              Resume
+            </a>
 
-                    {/* Resume */}
-                    {/* Resume */}
-                    <Button
-                        variant="outline-light"
-                        href={`${import.meta.env.BASE_URL}resume.pdf`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Resume
-                    </Button>
+          </div>
 
-                </BootstrapNavbar.Collapse>
+        </BootstrapNavbar.Collapse>
 
-            </Container>
-        </BootstrapNavbar>
-    );
+      </Container>
+
+    </BootstrapNavbar>
+  );
 }
 
 export default Navbar;

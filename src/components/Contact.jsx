@@ -1,257 +1,453 @@
-import { motion } from "framer-motion";
-import {
-  Mail,
-  MapPin,
-  Send,
-} from "lucide-react";
+
+import { useState } from "react";
 
 import {
-  FaGithub,
+  FaPhone,
+  FaEnvelope,
   FaLinkedin,
-  FaInstagram,
+  FaGithub,
+  FaMapMarkerAlt,
+  FaCheck,
+  FaPaperPlane,
+  FaClock,
 } from "react-icons/fa";
 
+import "../css/Contact.css";
+
 function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    company: "",
+    inquiry: "Job opportunity",
+    subject: "",
+    message: "",
+  });
+
+  const emailAddress = "dverma6342@gmail.com";
+  const phoneNumber = "+917217699545";
+
+  const socialLinks = {
+    linkedin: "https://linkedin.com/in/verma-iot-solutions",
+    github: "https://github.com/deepak2222002",
+  };
+
+  const expertise = [
+    "Java & Spring Boot backend services",
+    "Microservices & REST API design",
+    "Full-stack delivery with React",
+    "Solution design & system modernization",
+    "Performance & test-coverage improvements",
+    "Technical mentoring",
+  ];
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormData((previous) => ({
+      ...previous,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const subject =
+      formData.subject.trim() ||
+      `${formData.inquiry} - ${formData.name}`;
+
+    const body = `
+Hello Deepak,
+
+${formData.message}
+
+Name: ${formData.name}
+Email: ${formData.email}
+Company: ${formData.company || "Not provided"}
+Inquiry Type: ${formData.inquiry}
+    `;
+
+    const mailtoLink =
+      `mailto:${emailAddress}` +
+      `?subject=${encodeURIComponent(subject)}` +
+      `&body=${encodeURIComponent(body)}`;
+
+    window.location.href = mailtoLink;
+  };
+
+  const quickActions = [
+    {
+      title: "Call Me",
+      subtitle: phoneNumber,
+      description: "Opens your phone dialer",
+      icon: <FaPhone />,
+      href: `tel:${phoneNumber}`,
+    },
+    {
+      title: "Email Me",
+      subtitle: emailAddress,
+      description: "Opens your email app",
+      icon: <FaEnvelope />,
+      href: `mailto:${emailAddress}`,
+    },
+    {
+      title: "LinkedIn",
+      subtitle: "Professional Profile",
+      description: "Connect professionally",
+      icon: <FaLinkedin />,
+      href: socialLinks.linkedin,
+      external: true,
+    },
+    {
+      title: "GitHub",
+      subtitle: "View My Code",
+      description: "Explore my repositories",
+      icon: <FaGithub />,
+      href: socialLinks.github,
+      external: true,
+    },
+  ];
+
   return (
-    <section id="contact" className="bg-transparent text-white py-5">
-      <div className="container py-5">
+    <section id="contact" className="contact-section">
 
-        {/* Section Heading */}
-        <motion.div
-          className="text-center mb-5"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <p className="text-primary fw-bold text-uppercase mb-2">
-            Get In Touch
-          </p>
+      <div className="container contact-container">
 
-          <h2 className="display-5 fw-bold">
-            Let's Build Something Together
+        {/* SECTION HEADER */}
+        <div className="contact-header text-center">
+
+          <h2 className="contact-heading">
+            Contact
           </h2>
 
-          <p className="text-secondary lead mt-3">
-            Have a project, opportunity, or just want to connect?
-            Feel free to reach out.
+          <p className="contact-subtitle">
+            Hiring for a senior backend or full-stack engineer?
+            Send a message or email me directly, and I'll reply
+            with availability and a current resume.
           </p>
-        </motion.div>
 
-        <div className="row g-5 align-items-start">
+        </div>
 
-          {/* LEFT SIDE */}
-          <div className="col-12 col-lg-5">
+        {/* MAIN CONTENT */}
+        <div className="row g-4 contact-content">
 
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-            >
+          {/* LEFT COLUMN */}
+          <div className="col-12 col-lg-6">
 
-              <h3 className="fw-bold mb-4">
-                Let's Connect
+            <div className="contact-info">
+
+              <h3 className="contact-subheading">
+                Get in touch
               </h3>
 
-              <p className="text-secondary mb-4">
-                I'm always open to discussing software development,
-                interesting projects, career opportunities, and new ideas.
+              <p className="contact-intro">
+                Open to Java Developer, backend and full-stack roles.
+                Email is the fastest way to reach me.
               </p>
 
-              {/* Email */}
-              <div className="d-flex align-items-center gap-3 mb-4">
-                <div className="bg-primary bg-opacity-10 rounded-circle p-3">
-                  <Mail className="text-primary" size={22} />
+              {/* AVAILABILITY CARD */}
+              <div className="availability-card">
+
+                <div className="availability-title">
+                  <span className="availability-dot"></span>
+                  Open to senior & lead roles
                 </div>
 
-                <div>
-                  <small className="text-secondary d-block">
-                    Email
-                  </small>
+                <div className="availability-details">
 
-                  <a
-                    href="mailto:your-email@example.com"
-                    className="text-white text-decoration-none"
-                  >
-                    dverma6342@example.com
-                  </a>
+                  <span>Response Time:</span>
+                  <strong>Usually within 24 hours</strong>
+
+                  <span>Working Hours:</span>
+                  <strong>Flexible, IST working hours</strong>
+
+                  <span>Timezone:</span>
+                  <strong>IST (UTC+5:30)</strong>
+
                 </div>
-              </div>
-
-              {/* Location */}
-              <div className="d-flex align-items-center gap-3 mb-4">
-                <div className="bg-primary bg-opacity-10 rounded-circle p-3">
-                  <MapPin className="text-primary" size={22} />
-                </div>
-
-                <div>
-                  <small className="text-secondary d-block">
-                    Location
-                  </small>
-
-                  <span>
-                    New Delhi, India
-                  </span>
-                </div>
-              </div>
-
-              {/* Social Links */}
-              <h5 className="fw-bold mt-5 mb-3">
-                Find Me Online
-              </h5>
-
-              <div className="d-flex gap-3">
-
-                <a
-                  href="https://github.com/deepak2222002/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn btn-outline-secondary rounded-circle"
-                  aria-label="GitHub"
-                >
-                  <FaGithub />
-                </a>
-
-                <a
-                  href="https://linkedin.com/in/verma-iot-solutions/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn btn-outline-secondary rounded-circle"
-                  aria-label="LinkedIn"
-                >
-                  <FaLinkedin />
-                </a>
-
-                <a
-                  href="https://www.instagram.com/vermaji7217/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn btn-outline-secondary rounded-circle"
-                  aria-label="Instagram"
-                >
-                  <FaInstagram />
-                </a>
 
               </div>
 
-            </motion.div>
-          </div>
+              {/* QUICK ACTIONS */}
+              <div className="contact-block">
 
-          {/* RIGHT SIDE - CONTACT FORM */}
-          <div className="col-12 col-lg-7">
-
-            <motion.div
-              className="card bg-black border-secondary shadow-lg"
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-            >
-
-              <div className="card-body p-4 p-lg-5">
-
-                <h4 className="fw-bold mb-4 text-light">
-                  Send Me a Message
+                <h4 className="contact-block-title">
+                  Quick Actions
                 </h4>
 
-                <form>
+                <div className="row g-2">
 
-                  {/* Name */}
-                  <div className="mb-3">
+                  {quickActions.map((action) => (
+
+                    <div className="col-6" key={action.title}>
+
+                      <a
+                        href={action.href}
+                        target={action.external ? "_blank" : undefined}
+                        rel={
+                          action.external
+                            ? "noopener noreferrer"
+                            : undefined
+                        }
+                        className="quick-action-card text-decoration-none"
+                      >
+
+                        <div className="quick-action-icon">
+                          {action.icon}
+                        </div>
+
+                        <div className="quick-action-content">
+
+                          <h5>{action.title}</h5>
+
+                          <span>{action.subtitle}</span>
+
+                          <small>{action.description}</small>
+
+                        </div>
+
+                      </a>
+
+                    </div>
+
+                  ))}
+
+                </div>
+
+              </div>
+
+              {/* EXPERTISE */}
+              <div className="contact-block">
+
+                <h4 className="contact-block-title">
+                  Where I add value
+                </h4>
+
+                <div className="row g-2">
+
+                  {expertise.map((item, index) => (
+
+                    <div className="col-6" key={index}>
+
+                      <div className="expertise-item">
+                        <FaCheck />
+                        <span>{item}</span>
+                      </div>
+
+                    </div>
+
+                  ))}
+
+                </div>
+
+              </div>
+
+              {/* LOCATION */}
+              <div className="contact-location">
+
+                <FaMapMarkerAlt />
+
+                <div>
+                  <strong>New Delhi, India</strong>
+                  <span>
+                    Open to remote work and international projects
+                  </span>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+          {/* RIGHT COLUMN - CONTACT FORM */}
+          <div className="col-12 col-lg-6">
+
+            <div className="contact-form-card">
+
+              <div className="contact-form-header">
+
+                <h3>Send a message</h3>
+
+                <p>Fields marked * are required.</p>
+
+              </div>
+
+              <form onSubmit={handleSubmit}>
+
+                {/* NAME AND EMAIL */}
+                <div className="row g-3">
+
+                  <div className="col-12 col-md-6">
+
                     <label
-                      htmlFor="name"
-                      className="form-label text-secondary"
+                      htmlFor="contact-name"
+                      className="contact-label"
                     >
-                      Your Name
+                      Full Name *
                     </label>
 
                     <input
                       type="text"
-                      id="name"
-                      className="form-control bg-dark text-white border-secondary"
-                      placeholder="Enter your name"
+                      id="contact-name"
+                      name="name"
+                      className="form-control contact-input"
+                      placeholder="Your full name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
                     />
+
                   </div>
 
-                  {/* Email */}
-                  <div className="mb-3">
+                  <div className="col-12 col-md-6">
+
                     <label
-                      htmlFor="email"
-                      className="form-label text-secondary"
+                      htmlFor="contact-email"
+                      className="contact-label"
                     >
-                      Email Address
+                      Email Address *
                     </label>
 
                     <input
                       type="email"
-                      id="email"
-                      className="form-control bg-dark text-white border-secondary"
-                      placeholder="Enter your email"
+                      id="contact-email"
+                      name="email"
+                      className="form-control contact-input"
+                      placeholder="you@example.com"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
                     />
+
                   </div>
 
-                  {/* Subject */}
-                  <div className="mb-3">
+                  {/* COMPANY AND INQUIRY */}
+                  <div className="col-12 col-md-6">
+
                     <label
-                      htmlFor="subject"
-                      className="form-label text-secondary"
+                      htmlFor="contact-company"
+                      className="contact-label"
+                    >
+                      Company (Optional)
+                    </label>
+
+                    <input
+                      type="text"
+                      id="contact-company"
+                      name="company"
+                      className="form-control contact-input"
+                      placeholder="Company name"
+                      value={formData.company}
+                      onChange={handleChange}
+                    />
+
+                  </div>
+
+                  <div className="col-12 col-md-6">
+
+                    <label
+                      htmlFor="contact-inquiry"
+                      className="contact-label"
+                    >
+                      Inquiry type
+                    </label>
+
+                    <select
+                      id="contact-inquiry"
+                      name="inquiry"
+                      className="form-select contact-input"
+                      value={formData.inquiry}
+                      onChange={handleChange}
+                    >
+                      <option>Job opportunity</option>
+                      <option>Recruitment</option>
+                      <option>Technical discussion</option>
+                      <option>Freelance project</option>
+                      <option>Collaboration</option>
+                      <option>Other</option>
+                    </select>
+
+                  </div>
+
+                  {/* SUBJECT */}
+                  <div className="col-12">
+
+                    <label
+                      htmlFor="contact-subject"
+                      className="contact-label"
                     >
                       Subject
                     </label>
 
                     <input
                       type="text"
-                      id="subject"
-                      className="form-control bg-dark text-white border-secondary"
-                      placeholder="What would you like to discuss?"
+                      id="contact-subject"
+                      name="subject"
+                      className="form-control contact-input"
+                      placeholder="Optional - will auto-generate if left empty"
+                      value={formData.subject}
+                      onChange={handleChange}
                     />
+
                   </div>
 
-                  {/* Message */}
-                  <div className="mb-4">
+                  {/* MESSAGE */}
+                  <div className="col-12">
+
                     <label
-                      htmlFor="message"
-                      className="form-label text-secondary"
+                      htmlFor="contact-message"
+                      className="contact-label"
                     >
-                      Message
+                      Message *
                     </label>
 
                     <textarea
-                      id="message"
+                      id="contact-message"
+                      name="message"
+                      className="form-control contact-input contact-textarea"
+                      placeholder="Role, team and anything else I should know"
                       rows="5"
-                      className="form-control bg-dark text-white border-secondary"
-                      placeholder="Write your message..."
-                    ></textarea>
+                      maxLength={1000}
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
+                    />
+
+                    <div className="message-counter">
+                      {formData.message.length}/1000 characters
+                    </div>
+
                   </div>
 
-                  {/* Submit */}
-                  <button
-                    type="submit"
-                    className="btn btn-primary w-100 py-2"
-                  >
-                    Send Message
-                    <Send size={18} className="ms-2" />
-                  </button>
+                  {/* SUBMIT */}
+                  <div className="col-12">
 
-                </form>
+                    <button
+                      type="submit"
+                      className="btn contact-submit-btn w-100"
+                    >
+                      <FaPaperPlane className="me-2" />
+                      Send Message
+                    </button>
 
-              </div>
-            </motion.div>
+                  </div>
+
+                </div>
+
+                <p className="contact-privacy">
+                  * Your details are used only to respond to your inquiry.
+                </p>
+
+              </form>
+
+            </div>
 
           </div>
+
         </div>
-
-        {/* Footer */}
-        <hr className="border-secondary mt-5" />
-
-        <div className="text-center pt-4">
-          <p className="text-secondary mb-0">
-            © 2026 Deepak Verma. Built with React & Bootstrap.
-          </p>
-        </div>
-
       </div>
+
     </section>
   );
 }

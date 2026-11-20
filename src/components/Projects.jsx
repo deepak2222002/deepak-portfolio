@@ -1,292 +1,409 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
-import ProjectDetails from "./ProjectDetails";
-import projectsData from "../data/projectsData";
 
-function Projects() {
-  const [selectedProject, setSelectedProject] = useState(null);
+import {
+  FaBriefcase,
+  FaUser,
+  FaSearch,
+  FaFileAlt,
+  FaClipboardCheck,
+  FaBell,
+  FaReact,
+  FaJava,
+  FaDatabase,
+  FaDocker,
+  FaAws,
+  FaServer,
+  FaShieldAlt,
+  FaCodeBranch,
+  FaArrowRight,
+  FaGithub,
+  FaExternalLinkAlt,
+} from "react-icons/fa";
 
-  const projectIcons = [
-    "bi bi-cart-check-fill",
-    "bi bi-diagram-3-fill",
-    "bi bi-code-slash",
+import {
+  SiSpringboot,
+  SiApachekafka,
+  SiJenkins,
+  SiMysql,
+} from "react-icons/si";
+
+import "../css/Project.css";
+
+function Project() {
+
+  const projectFeatures = [
+    {
+      icon: <FaSearch />,
+      title: "Job Discovery",
+      description: "Explore jobs and find relevant opportunities.",
+      module: "job_portal",
+      technologies: "React · REST APIs",
+    },
+    {
+      icon: <FaUser />,
+      title: "Candidate Profile",
+      description: "Create and manage candidate profiles and resumes.",
+      module: "user_profile",
+      technologies: "React · Spring Boot",
+    },
+    {
+      icon: <FaClipboardCheck />,
+      title: "Application Management",
+      description: "Apply for jobs and track application progress.",
+      module: "application",
+      technologies: "Java · MySQL",
+    },
+    {
+      icon: <FaBell />,
+      title: "Notifications",
+      description: "Application-related updates and communication.",
+      module: "notification",
+      technologies: "Kafka · Spring Boot",
+    },
+  ];
+
+  const technologyStack = [
+    {
+      name: "Java",
+      icon: <FaJava />,
+    },
+    {
+      name: "Spring Boot",
+      icon: <SiSpringboot />,
+    },
+    {
+      name: "Spring Security & JWT",
+      icon: <FaShieldAlt />,
+    },
+    {
+      name: "React.js",
+      icon: <FaReact />,
+    },
+    {
+      name: "MySQL",
+      icon: <SiMysql />,
+    },
+    {
+      name: "REST APIs",
+      icon: <FaServer />,
+    },
+    {
+      name: "Apache Kafka",
+      icon: <SiApachekafka />,
+    },
+    {
+      name: "Docker",
+      icon: <FaDocker />,
+    },
+    {
+      name: "Jenkins",
+      icon: <SiJenkins />,
+    },
+    {
+      name: "AWS",
+      icon: <FaAws />,
+    },
   ];
 
   return (
-    <section
-      id="projects"
-      className="py-5 text-light"
-      style={{ background: "transparent" }}
-    >
-      <div className="container py-5">
+    <section id="projects" className="projects-section">
 
-        {/* =========================
-            SECTION HEADING
-        ========================== */}
+      <div className="container projects-container">
 
-        <motion.div
-          className="text-center mb-5"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <p
-            className="fw-bold text-uppercase small mb-2"
-            style={{
-              color: "#67c7e8",
-              letterSpacing: "3px",
-            }}
-          >
-            WHAT I BUILT
-          </p>
+        {/* SECTION HEADER */}
+        <div className="projects-header text-center">
 
-          <h2 className="display-5 fw-bold mb-3 text-white">
+          <span className="projects-eyebrow">
+            WORK
+          </span>
+
+          <h2 className="projects-heading">
             Featured Projects
           </h2>
 
-          <p className="text-secondary mx-auto col-lg-7">
-            A collection of applications and systems built using
-            Java, Spring Boot, React, Microservices and modern
-            development technologies.
+          <p className="projects-subtitle">
+            Building practical full-stack applications with Java,
+            Spring Boot, React and scalable backend architecture.
           </p>
-        </motion.div>
-
-
-        {/* =========================
-            PROJECT CARDS
-        ========================== */}
-
-        <div className="row g-4">
-
-          {projectsData.map((project, index) => {
-
-            const icon =
-              projectIcons[index % projectIcons.length];
-
-            return (
-              <div
-                className="col-md-6 col-xl-4"
-                key={project.title}
-              >
-
-                <motion.div
-                  className="card h-100 text-light shadow-lg"
-                  style={{
-                    background: "#111c2e",
-                    border: "1px solid #26364f",
-                    borderRadius: "16px",
-                    overflow: "hidden",
-                  }}
-
-                  initial={{
-                    opacity: 0,
-                    y: 50,
-                  }}
-
-                  whileInView={{
-                    opacity: 1,
-                    y: 0,
-                  }}
-
-                  viewport={{
-                    once: true,
-                    amount: 0.2,
-                  }}
-
-                  transition={{
-                    duration: 0.5,
-                    delay: index * 0.12,
-                  }}
-
-                  whileHover={{
-                    y: -8,
-                    boxShadow:
-                      "0 15px 35px rgba(103, 199, 232, 0.12)",
-                    borderColor: "#67c7e8",
-                  }}
-                >
-
-                  {/* =========================
-                      HEADER
-                  ========================== */}
-
-                  <div
-                    className="p-4 d-flex justify-content-between align-items-center"
-                    style={{
-                      background:
-                        "linear-gradient(135deg, #17263a, #111c2e)",
-                      borderBottom: "1px solid #26364f",
-                    }}
-                  >
-
-                    {/* Icon */}
-
-                    <div
-                      className="rounded-3 p-3 d-flex align-items-center justify-content-center"
-                      style={{
-                        background: "#0f172a",
-                        color: "#67c7e8",
-                        width: "58px",
-                        height: "58px",
-                      }}
-                    >
-                      <i className={`${icon} fs-3`}></i>
-                    </div>
-
-
-                    {/* Number */}
-
-                    <span
-                      className="fw-bold"
-                      style={{
-                        color: "#64748b",
-                        fontSize: "24px",
-                      }}
-                    >
-                      {project.number ||
-                        String(index + 1).padStart(2, "0")}
-                    </span>
-
-                  </div>
-
-
-                  {/* =========================
-                      BODY
-                  ========================== */}
-
-                  <div className="card-body p-4">
-
-                    {/* Project Label */}
-
-                    <span
-                      className="badge rounded-pill mb-3 px-3 py-2"
-                      style={{
-                        background: "#1e3a50",
-                        color: "#67c7e8",
-                      }}
-                    >
-                      PROJECT
-                    </span>
-
-
-                    {/* Title */}
-
-                    <h3 className="card-title fw-bold fs-4 text-white">
-                      {project.title}
-                    </h3>
-
-
-                    {/* Description */}
-
-                    <p className="card-text text-secondary mb-4">
-                      {project.description}
-                    </p>
-
-
-                    {/* Technologies */}
-
-                    <div className="d-flex flex-wrap gap-2">
-
-                      {project.technologies.map(
-                        (technology) => (
-                          <span
-                            key={technology}
-                            className="badge rounded-pill fw-normal px-3 py-2"
-                            style={{
-                              background: "#0f172a",
-                              color: "#cbd5e1",
-                              border:
-                                "1px solid #334155",
-                            }}
-                          >
-                            {technology}
-                          </span>
-                        )
-                      )}
-
-                    </div>
-
-                  </div>
-
-
-                  {/* =========================
-                      FOOTER
-                  ========================== */}
-
-                  <div
-                    className="p-4"
-                    style={{
-                      borderTop: "1px solid #26364f",
-                    }}
-                  >
-
-                    <div className="d-flex gap-2">
-
-                      {/* GitHub */}
-
-                      <a
-                        href={project.github || "#"}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`btn btn-outline-light flex-fill ${
-                          !project.github
-                            ? "disabled"
-                            : ""
-                        }`}
-                      >
-                        <i className="bi bi-github me-2"></i>
-                        GitHub
-                      </a>
-
-
-                      {/* Details */}
-
-                      <button
-                        type="button"
-                        className="btn flex-fill"
-                        style={{
-                          background: "#67c7e8",
-                          color: "#0f172a",
-                          fontWeight: "600",
-                        }}
-                        onClick={() =>
-                          setSelectedProject(project)
-                        }
-                      >
-                        Details
-                        <i className="bi bi-arrow-up-right ms-2"></i>
-                      </button>
-
-                    </div>
-
-                  </div>
-
-                </motion.div>
-
-              </div>
-            );
-          })}
 
         </div>
 
+        {/* FEATURED PROJECT CARD */}
+        <div className="featured-project-card">
 
-        {/* =========================
-            PROJECT DETAILS
-        ========================== */}
+          {/* PROJECT STATUS */}
+          <div className="project-status">
+            <span className="project-status-dot"></span>
+            Personal Project · Job Portal
+          </div>
 
-        {selectedProject && (
-          <ProjectDetails
-            project={selectedProject}
-            onClose={() =>
-              setSelectedProject(null)
-            }
-          />
-        )}
+          {/* PROJECT INTRO */}
+          <div className="row align-items-center g-4 project-intro">
+
+            <div className="col-12 col-md-7">
+
+              <div className="project-logo">
+                <FaBriefcase />
+                <span>JobPortal</span>
+              </div>
+
+              <h3 className="project-title">
+                A candidate-focused Job Portal built with Java
+                and React.
+              </h3>
+
+              <p className="project-description">
+                A full-stack job portal that enables candidates
+                to discover opportunities, manage profiles and
+                resumes, apply for jobs and track application
+                progress through an integrated platform.
+              </p>
+
+              <div className="project-actions">
+
+                <a
+                  href="#job-portal-architecture"
+                  className="project-primary-btn"
+                >
+                  Explore Architecture
+                  <FaArrowRight />
+                </a>
+
+                <a
+                  href="#contact"
+                  className="project-secondary-btn"
+                >
+                  Discuss Project
+                  <FaArrowRight />
+                </a>
+
+              </div>
+
+            </div>
+
+            {/* PROJECT HIGHLIGHTS */}
+            <div className="col-12 col-md-5">
+
+              <div className="project-metrics">
+
+                <div className="project-metric">
+                  <FaSearch />
+                  <h4>Job Discovery</h4>
+                  <p>Explore opportunities</p>
+                </div>
+
+                <div className="project-metric">
+                  <FaUser />
+                  <h4>Profiles</h4>
+                  <p>Candidate management</p>
+                </div>
+
+                <div className="project-metric">
+                  <FaFileAlt />
+                  <h4>Applications</h4>
+                  <p>Job application workflow</p>
+                </div>
+
+                <div className="project-metric">
+                  <FaCodeBranch />
+                  <h4>Microservices</h4>
+                  <p>Architecture roadmap</p>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          {/* PROJECT FEATURE MODULES */}
+          <div className="project-modules">
+
+            {projectFeatures.map((feature) => (
+
+              <div className="project-module" key={feature.title}>
+
+                <div className="project-module-icon">
+                  {feature.icon}
+                </div>
+
+                <h4>{feature.title}</h4>
+
+                <span className="project-module-name">
+                  {feature.module}
+                </span>
+
+                <p>{feature.description}</p>
+
+                <small>{feature.technologies}</small>
+
+              </div>
+
+            ))}
+
+          </div>
+
+          {/* TECHNOLOGY STACK */}
+          <div className="project-tech-section">
+
+            <div className="project-section-label">
+              TECHNOLOGY STACK
+            </div>
+
+            <div className="project-tech-grid">
+
+              {technologyStack.map((technology) => (
+
+                <div
+                  className="project-tech-item"
+                  key={technology.name}
+                >
+
+                  {technology.icon}
+
+                  <span>{technology.name}</span>
+
+                </div>
+
+              ))}
+
+            </div>
+
+          </div>
+
+          {/* ARCHITECTURE DIAGRAM */}
+          <div
+            className="project-architecture"
+            id="job-portal-architecture"
+          >
+
+            <div className="project-section-label">
+              APPLICATION ARCHITECTURE
+            </div>
+
+            <p className="architecture-caption">
+              Planned microservices-based architecture
+            </p>
+
+            {/* CLIENT LAYER */}
+            <div className="architecture-client-layer">
+
+              <div className="architecture-node client-node">
+                <FaReact />
+                <strong>React Frontend</strong>
+                <small>Candidate Portal</small>
+              </div>
+
+            </div>
+
+            <div className="architecture-connector">
+              HTTPS / REST APIs
+            </div>
+
+            {/* BACKEND LAYER */}
+            <div className="architecture-backend">
+
+              <div className="architecture-layer-title">
+                JAVA · SPRING BOOT BACKEND
+              </div>
+
+              <div className="architecture-service-grid">
+
+                <div className="architecture-node">
+                  <FaShieldAlt />
+                  <strong>Auth Service</strong>
+                  <small>Spring Security · JWT</small>
+                </div>
+
+                <div className="architecture-node">
+                  <FaUser />
+                  <strong>User Service</strong>
+                  <small>Candidate profiles</small>
+                </div>
+
+                <div className="architecture-node">
+                  <FaBriefcase />
+                  <strong>Job Service</strong>
+                  <small>Job discovery</small>
+                </div>
+
+                <div className="architecture-node">
+                  <FaClipboardCheck />
+                  <strong>Application Service</strong>
+                  <small>Application tracking</small>
+                </div>
+
+              </div>
+
+              {/* EVENT COMMUNICATION */}
+              <div className="architecture-connector">
+                Asynchronous event communication
+              </div>
+
+              <div className="architecture-event-node">
+                <SiApachekafka />
+                <strong>Apache Kafka</strong>
+                <small>Event-driven communication</small>
+              </div>
+
+              <div className="architecture-service-grid notification-grid">
+
+                <div className="architecture-node">
+                  <FaBell />
+                  <strong>Notification Service</strong>
+                  <small>Application updates</small>
+                </div>
+
+              </div>
+
+            </div>
+
+            {/* DATA LAYER */}
+            <div className="architecture-connector">
+              Service-specific data access
+            </div>
+
+            <div className="architecture-data-layer">
+
+              <div className="architecture-node data-node">
+                <SiMysql />
+                <strong>MySQL</strong>
+                <small>Service databases</small>
+              </div>
+
+            </div>
+
+            {/* DEPLOYMENT */}
+            <div className="architecture-deployment">
+
+              <span>DEPLOYMENT & CI/CD ROADMAP</span>
+
+              <div className="deployment-technologies">
+
+                <span><FaDocker /> Docker</span>
+                <span><SiJenkins /> Jenkins</span>
+                <span><FaAws /> AWS</span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          {/* FOOTER NOTE */}
+          <div className="project-card-footer">
+            <span>
+              <FaCodeBranch />
+              Full-stack development · Backend architecture
+            </span>
+            <span>Java · React · Spring Boot</span>
+          </div>
+
+        </div>
 
       </div>
+
     </section>
   );
 }
 
-export default Projects;
+export default Project;

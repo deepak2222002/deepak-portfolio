@@ -1,323 +1,272 @@
-import { motion } from "framer-motion";
+
+import {
+  FaBriefcase,
+  FaCalendarAlt,
+  FaMapMarkerAlt,
+} from "react-icons/fa";
+
+import "../css/Experience.css";
 
 function Experience() {
-  const experience = {
-    period: "Apr 2023 – Oct 2026",
-    role: "Java Full Stack Developer",
-    company: "Begapt Tech Solutions Pvt. Ltd.",
-    location: "India",
 
-    description:
-      "Worked on enterprise applications for manufacturing and business requirements, covering development, API integration, database, deployment and production support.",
+  // Add new companies at the beginning of this array.
+  // The first item will always appear at the top.
 
-    responsibilities: [
-      "Handled development activities from requirement understanding to development, deployment and production support.",
-      "Developed backend and frontend features based on project requirements and application needs.",
-      "Understood customer requirements and contributed to solution planning and application design.",
-      "Managed GitHub branches, API coordination and integration between frontend and backend teams.",
-      "Worked with developers throughout development, testing, debugging, deployment and production support.",
-    ],
+  const experiences = [
+    {
+      id: 1,
+      company: "Begapt Tech Solutions Pvt. Ltd.",
+      role: "Java Full Stack Developer",
+      employmentType: "Full-time",
+      period: "Apr 2023 – Aug 2026",
+      duration: "",
+      location: "India",
+      client: "Industrial Automation & Manufacturing",
+      marker: "B",
 
-    technicalContributions: [
-      "Developed Spring Boot microservices and REST APIs for manufacturing and business applications.",
-      "Implemented Apache Kafka for event-driven communication and asynchronous processing.",
-      "Developed React.js modules and integrated frontend applications with backend APIs.",
-      "Worked with MySQL, Spring Security, JWT, Docker, Kubernetes and Jenkins for development and deployment.",
-    ],
+      stats: [
+        {
+          value: "10+",
+          label: "Full-stack modules developed",
+        },
+        {
+          value: "150+",
+          label: "RESTful APIs deployed",
+        },
+        {
+          value: "40%",
+          label: "API response time reduced",
+        },
+      ],
 
-    technologies: [
-      "Java",
-      "Spring Boot",
-      "Microservices",
-      "REST API",
-      "Apache Kafka",
-      "React.js",
-      "MySQL",
-      "Spring Security",
-      "JWT",
-      "Docker",
-      "Kubernetes",
-      "Jenkins",
-      "GitHub",
-      "Swagger",
-    ],
-  };
+      achievements: [
+        "Designed and developed 10+ full-stack modules using Java, Spring Boot, and React.js, shipping production features across Manufacturing Execution Systems (MES) and Machine Inspection & Monitoring Systems (MI&MS) for the automobile industry.",
+
+        "Developed and deployed 150+ RESTful APIs using Spring Boot and SQL Server, improving integration efficiency by 30% and enabling scalable microservices architecture.",
+
+        "Reduced API response time by 40% through backend optimization, caching strategies, and efficient database query design.",
+
+        "Optimized SQL Server queries across 5+ modules, achieving 25% improvement in backend performance and reduced page load times.",
+
+        "Engineered dynamic production monitoring dashboards using React.js and implemented React Hooks and reusable components for high-performance UIs.",
+
+        "Managed Git-based version control and CI/CD pipelines, enabling automated builds and zero-downtime deployments; conducted peer code reviews.",
+      ],
+
+      techStack: [
+        "Java",
+        "Spring Boot",
+        "Kafka",
+        "Microservices",
+        "REST APIs",
+        "Microsoft SQL Server",
+        "JUnit",
+        "Jenkins CI/CD",
+      ],
+    },
+
+    
+
+    // ADD YOUR NEXT COMPANY HERE.
+    // Newest experience should be placed first.
+  ];
 
   return (
-    <section
-      id="experience"
-      className="py-5"
-      style={{
-        backgroundColor: "#0f172a",
-      }}
-    >
-      <div className="container px-3">
+    <section id="experience" className="experience-section">
 
-        {/* ================= SECTION HEADER ================= */}
-        <motion.div
-          className="text-center mb-4"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          <p
-            className="fw-semibold small text-uppercase mb-1"
-            style={{ color: "#67c7e8" }}
-          >
+      <div className="container experience-container">
+
+        {/* SECTION HEADER */}
+        <div className="experience-header text-center">
+
+          <span className="experience-eyebrow">
+            CAREER
+          </span>
+
+          <h2 className="experience-heading">
             Professional Experience
-          </p>
-
-          <h2 className="fw-bold text-light mb-2">
-            My Experience
           </h2>
 
-          <p className="text-secondary small mb-0">
-            Java Full Stack development across enterprise applications.
+          <p className="experience-subtitle">
+            Professional experience building scalable enterprise
+            applications, backend systems and full-stack solutions.
           </p>
-        </motion.div>
 
+        </div>
 
-        {/* ================= EXPERIENCE CARD ================= */}
-        <motion.div
-          className="card border-0 shadow-lg w-100"
-          style={{
-            backgroundColor: "#151c2c",
-            borderRadius: "12px",
-          }}
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
+        {/* DYNAMIC EXPERIENCE TIMELINE */}
+        <div className="experience-timeline">
 
-          <div className="card-body p-3 p-md-4">
+          {experiences.map((experience, index) => (
 
-
-            {/* ================= HEADER ================= */}
-            <div className="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
-
-              {/* Company / Role */}
-              <div className="d-flex align-items-center gap-3">
-
-                <div
-                  className="rounded-3 d-flex align-items-center justify-content-center flex-shrink-0"
-                  style={{
-                    width: "44px",
-                    height: "44px",
-                    backgroundColor: "rgba(103, 199, 232, 0.08)",
-                    border: "1px solid rgba(103, 199, 232, 0.30)",
-                  }}
-                >
-                  <i
-                    className="bi bi-code-slash fs-5"
-                    style={{ color: "#67c7e8" }}
-                  ></i>
-                </div>
-
-                <div>
-                  <h4 className="fw-bold text-light mb-1">
-                    {experience.role}
-                  </h4>
-
-                  <div className="small text-secondary">
-                    {experience.company}{" "}
-                    <span className="mx-1">•</span>{" "}
-                    {experience.location}
-                  </div>
-                </div>
-
-              </div>
-
-
-              {/* Period */}
-              <span
-                className="badge fw-normal px-3 py-2 align-self-start align-self-md-center"
-                style={{
-                  color: "#8bd9f3",
-                  backgroundColor: "rgba(103, 199, 232, 0.07)",
-                  border: "1px solid rgba(103, 199, 232, 0.28)",
-                }}
-              >
-                <i className="bi bi-calendar3 me-2"></i>
-                {experience.period}
-              </span>
-
-            </div>
-
-
-            {/* Divider */}
-            <hr
-              className="my-3"
-              style={{
-                borderColor: "rgba(255,255,255,0.10)",
-              }}
-            />
-
-
-            {/* ================= DESCRIPTION ================= */}
-            <p
-              className="small lh-lg mb-4"
-              style={{ color: "#94a3b8" }}
+            <div
+              className="experience-item"
+              key={experience.id}
             >
-              {experience.description}
-            </p>
 
+              {/* TIMELINE MARKER */}
+              <div className="experience-marker">
 
-            {/* ================= RESPONSIBILITIES ================= */}
-            <div className="mb-4">
-
-              <div className="d-flex align-items-center gap-2 mb-3">
-
-                <i
-                  className="bi bi-briefcase"
-                  style={{ color: "#67c7e8" }}
-                ></i>
-
-                <h6 className="fw-bold text-light mb-0">
-                  Roles & Responsibilities
-                </h6>
-
-              </div>
-
-
-              <div className="row g-2">
-
-                {experience.responsibilities.map((item, index) => (
-                  <motion.div
-                    key={index}
-                    className="col-12 col-lg-6"
-                    initial={{ opacity: 0, x: index % 2 === 0 ? -10 : 10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{
-                      duration: 0.35,
-                      delay: index * 0.04,
-                    }}
-                  >
-                    <div className="d-flex gap-2">
-
-                      <span
-                        className="fw-bold small flex-shrink-0"
-                        style={{ color: "#67c7e8" }}
-                      >
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
-
-                      <span
-                        className="small lh-lg"
-                        style={{ color: "#94a3b8" }}
-                      >
-                        {item}
-                      </span>
-
-                    </div>
-                  </motion.div>
-                ))}
-
-              </div>
-
-            </div>
-
-
-            {/* ================= TECHNICAL CONTRIBUTIONS ================= */}
-            <div className="mb-4">
-
-              <div className="d-flex align-items-center gap-2 mb-3">
-
-                <i
-                  className="bi bi-terminal"
-                  style={{ color: "#67c7e8" }}
-                ></i>
-
-                <h6 className="fw-bold text-light mb-0">
-                  Technical Contributions
-                </h6>
-
-              </div>
-
-
-              <div className="row g-2">
-
-                {experience.technicalContributions.map((item, index) => (
-                  <motion.div
-                    key={index}
-                    className="col-12 col-lg-6"
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{
-                      duration: 0.35,
-                      delay: index * 0.05,
-                    }}
-                  >
-
-                    <div className="d-flex gap-2">
-
-                      <i
-                        className="bi bi-check2 flex-shrink-0"
-                        style={{ color: "#67c7e8" }}
-                      ></i>
-
-                      <span
-                        className="small lh-lg"
-                        style={{ color: "#94a3b8" }}
-                      >
-                        {item}
-                      </span>
-
-                    </div>
-
-                  </motion.div>
-                ))}
-
-              </div>
-
-            </div>
-
-
-            {/* ================= TECHNOLOGIES ================= */}
-            <div>
-
-              <div className="d-flex align-items-center gap-2 mb-2">
-
-                <i
-                  className="bi bi-stack"
-                  style={{ color: "#67c7e8" }}
-                ></i>
-
-                <h6 className="fw-bold text-light mb-0">
-                  Technologies
-                </h6>
-
-              </div>
-
-
-              <div className="d-flex flex-wrap gap-2">
-
-                {experience.technologies.map((tech, index) => (
-                  <span
-                    key={index}
-                    className="badge fw-normal"
-                    style={{
-                      color: "#aeb9c8",
-                      backgroundColor: "#111827",
-                      border: "1px solid #334155",
-                      padding: "6px 9px",
-                    }}
-                  >
-                    {tech}
+                {experience.logo ? (
+                  <img
+                    src={experience.logo}
+                    alt={`${experience.company} logo`}
+                    className="experience-company-logo"
+                  />
+                ) : (
+                  <span>
+                    {experience.marker || (
+                      <FaBriefcase />
+                    )}
                   </span>
-                ))}
+                )}
+
+              </div>
+
+              {/* EXPERIENCE CARD */}
+              <div className="experience-card">
+
+                {/* COMPANY AND ROLE */}
+                <div className="experience-card-header">
+
+                  <div className="experience-company-row">
+
+                    <span className="experience-company">
+                      {experience.company}
+                    </span>
+
+                    {experience.employmentType && (
+                      <span className="experience-current">
+                        {experience.employmentType}
+                      </span>
+                    )}
+
+                  </div>
+
+                  <h3 className="experience-role">
+                    {experience.role}
+                  </h3>
+
+                  {/* EXPERIENCE META */}
+                  <div className="experience-meta">
+
+                    {experience.period && (
+                      <span>
+                        <FaCalendarAlt />
+                        {experience.period}
+                      </span>
+                    )}
+
+                    {experience.duration && (
+                      <span className="experience-duration">
+                        {experience.duration}
+                      </span>
+                    )}
+
+                    {experience.location && (
+                      <span>
+                        <FaMapMarkerAlt />
+                        {experience.location}
+                      </span>
+                    )}
+
+                    {experience.client && (
+                      <span className="experience-client">
+                        {experience.client}
+                      </span>
+                    )}
+
+                  </div>
+
+                </div>
+
+                {/* OPTIONAL DESCRIPTION */}
+                {experience.description && (
+                  <p className="experience-description">
+                    {experience.description}
+                  </p>
+                )}
+
+                {/* OPTIONAL STATISTICS */}
+                {experience.stats?.length > 0 && (
+                  <div className="experience-highlights">
+
+                    {experience.stats.map((stat, statIndex) => (
+                      <div
+                        className="experience-highlight-box"
+                        key={statIndex}
+                      >
+                        <h4>{stat.value}</h4>
+                        <p>{stat.label}</p>
+                      </div>
+                    ))}
+
+                  </div>
+                )}
+
+                {/* KEY ACHIEVEMENTS */}
+                {experience.achievements?.length > 0 && (
+                  <>
+                    <div className="experience-divider"></div>
+
+                    <div className="experience-achievements">
+
+                      <h4 className="experience-label">
+                        KEY ACHIEVEMENTS
+                      </h4>
+
+                      <ul>
+                        {experience.achievements.map(
+                          (achievement, achievementIndex) => (
+                            <li key={achievementIndex}>
+                              {achievement}
+                            </li>
+                          )
+                        )}
+                      </ul>
+
+                    </div>
+                  </>
+                )}
+
+                {/* TECH STACK */}
+                {experience.techStack?.length > 0 && (
+                  <>
+                    <div className="experience-divider"></div>
+
+                    <div className="experience-tech">
+
+                      <h4 className="experience-label">
+                        TECH STACK
+                      </h4>
+
+                      <div className="d-flex flex-wrap gap-2">
+
+                        {experience.techStack.map((technology) => (
+                          <span
+                            className="experience-tech-tag"
+                            key={technology}
+                          >
+                            {technology}
+                          </span>
+                        ))}
+
+                      </div>
+
+                    </div>
+                  </>
+                )}
 
               </div>
 
             </div>
 
-          </div>
-        </motion.div>
+          ))}
+
+        </div>
 
       </div>
+
     </section>
   );
 }

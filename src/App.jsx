@@ -8,6 +8,7 @@ import Experience from "./components/Experience";
 import Achievements from "./components/Achievements";
 import Contact from "./components/Contact";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -17,17 +18,20 @@ function App() {
 
       <Hero />
 
-      <Journey />
-
-      <Projects />
-
-      <Skills />
+      <Skills />  
       
       <Experience />
 
-      <Achievements />
+      {/* <Journey /> */}
+
+      <Projects />
+
+      {/* <Achievements /> */}
 
       <Contact />
+
+
+      <Footer />
 
     </div>
   );
